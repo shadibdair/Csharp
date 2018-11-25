@@ -1,0 +1,97 @@
+using System;
+
+namespace ConsoleApp9
+{
+
+    class cookie
+    {
+        private bool glutin;
+        public bool Glutin
+        {
+            get { return glutin; }
+            set { glutin = value; }
+        }
+
+
+        private int numeggs;
+
+        public int Numeggs
+        {
+            get { return numeggs; }
+            set { numeggs = value; }
+        }
+
+        private double sugar;
+
+        public double Sugar
+        {
+            get { return sugar; }
+            set { sugar = value; }
+        }
+
+        private double flour;
+
+        public double Flour
+        {
+            get { return flour; }
+            set { flour = value; }
+        }
+
+        public void printCookie()
+        {
+            Console.WriteLine($"you have this amount of groceries to make a cookie:\n" + $"glutin{glutin}\n" + $"{numeggs}eggs\n" + $"{sugar}sugar\n" + $"{flour}flour\n");
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string choice;
+            cookie[] list = new cookie[3];
+            for (int i = 0; i < 3; i++)
+            {
+                list[i] = new cookie();
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                Console.WriteLine($"cookie number {i + 1}");
+                Console.WriteLine("Please Enter if you want gluten in your cookie press y/n..");
+                choice = Console.ReadLine();
+                while (choice != "y" && choice != "n")
+                {
+                    Console.WriteLine("please Enter again y/n");
+                    choice = Console.ReadLine();
+                }
+                if (choice == "y")
+                    list[i].Glutin = true;
+                else if (choice == "n")
+                    list[i].Glutin = false;
+                Console.WriteLine("Please enter number of eggs.");
+                list[i].Numeggs = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Please enter sugar gram.");
+                list[i].Sugar = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Please enter flour gram.");
+                list[i].Flour = Convert.ToDouble(Console.ReadLine());
+                Console.Clear();
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                Console.WriteLine($"cookie number -{i + 1}-");
+                list[i].printCookie();
+            }
+            list[0].Sugar = 4.5;
+            for (int i = 0; i < 2; i++)
+            {
+                Console.WriteLine($"cookie number -{i + 1}-");
+                list[i].printCookie();
+            }
+            list[1] = list[0];
+            list[1].Numeggs = 100;
+            for (int i = 0; i < 2; i++)
+            {
+                Console.WriteLine($"cookie number -{i + 1}-");
+                list[i].printCookie();
+            }
+        }
+    }
+}
