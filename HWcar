@@ -1,0 +1,71 @@
+using System;
+
+namespace ConsoleApp10
+{
+    class Car
+    {
+        private int speed;
+        public int Speed
+        {
+            get { return speed; }
+            set
+            {
+                if (speed >= 0)
+                    speed = value;
+                
+            }
+        }
+        private int slowDown;
+        public int SlowDown
+        {
+            get { return slowDown; }
+            set
+            {
+                if (slowDown >= 0)
+                    slowDown = value;
+            }
+        }
+        private bool stop;
+        public bool Stop
+        {
+            get { return stop; }
+            set
+            {
+                if (!stop)
+                    stop = value;
+            }
+        }
+
+        public string GetDescription()
+        {
+            return $"info car:\nGAZ:{Speed}\nSlow Down:{SlowDown}\nStop:{Stop}";
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Car car1 = new Car();
+            Console.WriteLine("\t\tStep 1\t\t");
+            Console.WriteLine(car1.GetDescription());
+            Console.WriteLine("press how much you want your speed???");
+            car1.Speed = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("");
+            Console.WriteLine($"\t\tyour speed:{car1.Speed} kmh\t\t");
+            Console.ReadLine();
+            car1.Speed -= 2;
+            car1.SlowDown = 2;
+            Console.WriteLine("\t\tStep 2\t\t");
+            Console.ReadLine();
+            Console.WriteLine($"you've slow your speed ->{car1.SlowDown} kmh");
+            Console.WriteLine(car1.GetDescription());
+            car1.Speed = 0;
+            car1.SlowDown = 0;
+            car1.Stop = true;
+            Console.ReadLine();
+            Console.WriteLine("\t\tStep 3\t\t");
+            Console.WriteLine("you STOP the car..");
+            Console.WriteLine(car1.GetDescription());
+        }
+    }
+}
